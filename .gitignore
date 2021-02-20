@@ -1,0 +1,7 @@
+*.DS_Store
+*.vcxproj.user
+LearnOpenGL.win32/.vs
+LearnOpenGL.win32/LearnOpenGL/x64
+*.xcuserstate
+project.xcworkspace
+xcuserdata
