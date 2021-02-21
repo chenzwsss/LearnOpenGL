@@ -96,3 +96,8 @@ void Shader::set4f(const std::string &name, float r, float g, float b, float a) 
 {
     glUniform4f(glGetUniformLocation(ID, name.c_str()), r, g, b, a);
 }
+
+void Shader::setMat4(const std::string &name, glm::mat4 mat4)
+{
+    glUniformMatrix4fv(glGetUniformLocation(ID, name.c_str()), 1, GL_FALSE, glm::value_ptr(mat4));
+}
