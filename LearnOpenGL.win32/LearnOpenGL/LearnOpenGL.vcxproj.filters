@@ -27,16 +27,16 @@
     <ClCompile Include="..\..\LearnOpenGL\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\LearnOpenGL\glad.c">
+    <ClCompile Include="..\..\LearnOpenGL\src\Camera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\LearnOpenGL\Shader.cpp">
+    <ClCompile Include="..\..\LearnOpenGL\src\glad.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\LearnOpenGL\stb_image.cpp">
+    <ClCompile Include="..\..\LearnOpenGL\src\Shader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\LearnOpenGL\Camera.cpp">
+    <ClCompile Include="..\..\LearnOpenGL\src\stb_image.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -53,13 +53,13 @@
     <ClInclude Include="..\..\LearnOpenGL\include\KHR\khrplatform.h">
       <Filter>Header Files\KHR</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\LearnOpenGL\Shader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\LearnOpenGL\stb_image.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\LearnOpenGL\include\Camera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\LearnOpenGL\include\Shader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\LearnOpenGL\include\stb_image.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
