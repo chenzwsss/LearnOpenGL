@@ -70,11 +70,11 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>C:\Users\chenzw\Desktop\LearnOpenGL\LearnOpenGL\include;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\chenzw\Desktop\LearnOpenGL\LearnOpenGL\src\imgui;C:\Users\chenzw\Desktop\LearnOpenGL\LearnOpenGL\include;$(IncludePath)</IncludePath>
     <LibraryPath>C:\Users\chenzw\Desktop\LearnOpenGL\LearnOpenGL\libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\Users\chenzw\Desktop\LearnOpenGL\LearnOpenGL\include;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\chenzw\Desktop\LearnOpenGL\LearnOpenGL\src\imgui;C:\Users\chenzw\Desktop\LearnOpenGL\LearnOpenGL\include;$(IncludePath)</IncludePath>
     <LibraryPath>C:\Users\chenzw\Desktop\LearnOpenGL\LearnOpenGL\libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -136,6 +136,13 @@
     <ClCompile Include="..\..\LearnOpenGL\main.cpp" />
     <ClCompile Include="..\..\LearnOpenGL\src\Camera.cpp" />
     <ClCompile Include="..\..\LearnOpenGL\src\glad.c" />
+    <ClCompile Include="..\..\LearnOpenGL\src\imgui\backends\imgui_impl_glfw.cpp" />
+    <ClCompile Include="..\..\LearnOpenGL\src\imgui\backends\imgui_impl_opengl3.cpp" />
+    <ClCompile Include="..\..\LearnOpenGL\src\imgui\imgui.cpp" />
+    <ClCompile Include="..\..\LearnOpenGL\src\imgui\imgui_demo.cpp" />
+    <ClCompile Include="..\..\LearnOpenGL\src\imgui\imgui_draw.cpp" />
+    <ClCompile Include="..\..\LearnOpenGL\src\imgui\imgui_tables.cpp" />
+    <ClCompile Include="..\..\LearnOpenGL\src\imgui\imgui_widgets.cpp" />
     <ClCompile Include="..\..\LearnOpenGL\src\Shader.cpp" />
     <ClCompile Include="..\..\LearnOpenGL\src\stb_image.cpp" />
   </ItemGroup>
@@ -147,6 +154,14 @@
     <ClInclude Include="..\..\LearnOpenGL\include\KHR\khrplatform.h" />
     <ClInclude Include="..\..\LearnOpenGL\include\Shader.h" />
     <ClInclude Include="..\..\LearnOpenGL\include\stb_image.h" />
+    <ClInclude Include="..\..\LearnOpenGL\src\imgui\backends\imgui_impl_glfw.h" />
+    <ClInclude Include="..\..\LearnOpenGL\src\imgui\backends\imgui_impl_opengl3.h" />
+    <ClInclude Include="..\..\LearnOpenGL\src\imgui\imconfig.h" />
+    <ClInclude Include="..\..\LearnOpenGL\src\imgui\imgui.h" />
+    <ClInclude Include="..\..\LearnOpenGL\src\imgui\imgui_internal.h" />
+    <ClInclude Include="..\..\LearnOpenGL\src\imgui\imstb_rectpack.h" />
+    <ClInclude Include="..\..\LearnOpenGL\src\imgui\imstb_textedit.h" />
+    <ClInclude Include="..\..\LearnOpenGL\src\imgui\imstb_truetype.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

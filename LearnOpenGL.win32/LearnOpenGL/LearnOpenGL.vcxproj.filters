@@ -22,6 +22,12 @@
     <Filter Include="Header Files\KHR">
       <UniqueIdentifier>{419d44eb-8de1-46db-be3a-df914619bb36}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\imgui">
+      <UniqueIdentifier>{251472e2-753d-4cd4-88bc-38ba93bd05ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\imgui\backends">
+      <UniqueIdentifier>{7bb7af69-36c6-4173-801a-51ca1b65477b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\LearnOpenGL\main.cpp">
@@ -38,6 +44,27 @@
     </ClCompile>
     <ClCompile Include="..\..\LearnOpenGL\src\stb_image.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\LearnOpenGL\src\imgui\backends\imgui_impl_glfw.cpp">
+      <Filter>Source Files\imgui\backends</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\LearnOpenGL\src\imgui\backends\imgui_impl_opengl3.cpp">
+      <Filter>Source Files\imgui\backends</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\LearnOpenGL\src\imgui\imgui.cpp">
+      <Filter>Source Files\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\LearnOpenGL\src\imgui\imgui_demo.cpp">
+      <Filter>Source Files\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\LearnOpenGL\src\imgui\imgui_draw.cpp">
+      <Filter>Source Files\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\LearnOpenGL\src\imgui\imgui_tables.cpp">
+      <Filter>Source Files\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\LearnOpenGL\src\imgui\imgui_widgets.cpp">
+      <Filter>Source Files\imgui</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -61,6 +88,30 @@
     </ClInclude>
     <ClInclude Include="..\..\LearnOpenGL\include\stb_image.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\LearnOpenGL\src\imgui\backends\imgui_impl_glfw.h">
+      <Filter>Source Files\imgui\backends</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\LearnOpenGL\src\imgui\backends\imgui_impl_opengl3.h">
+      <Filter>Source Files\imgui\backends</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\LearnOpenGL\src\imgui\imconfig.h">
+      <Filter>Source Files\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\LearnOpenGL\src\imgui\imgui.h">
+      <Filter>Source Files\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\LearnOpenGL\src\imgui\imgui_internal.h">
+      <Filter>Source Files\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\LearnOpenGL\src\imgui\imstb_rectpack.h">
+      <Filter>Source Files\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\LearnOpenGL\src\imgui\imstb_textedit.h">
+      <Filter>Source Files\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\LearnOpenGL\src\imgui\imstb_truetype.h">
+      <Filter>Source Files\imgui</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

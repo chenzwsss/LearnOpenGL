@@ -1,4 +1,4 @@
-//
+﻿//
 //  main.cpp
 //  LearnOpenGL
 //
@@ -17,12 +17,14 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
-const int screenWidth = 800;
-const int screenHeight = 600;
+#include <imgui.h>
+#include <backends/imgui_impl_glfw.h>
+#include <backends/imgui_impl_opengl3.h>
 
-//glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 3.0f);
-//glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
-//glm::vec3 cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
+ImVec4 clear_color = ImVec4(0.2f, 0.3f, 0.3f, 1.0f);
+
+const int screenWidth = 1200;
+const int screenHeight = 600;
 
 // the interval between now frame and last frame
 float deltaTime = 0.0f;
@@ -33,9 +35,6 @@ Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
 float lastMousePosX = (float)screenWidth / 2;
 float lastMousePosY = (float)screenHeight / 2;
 bool firstMoveMouse = true;
-//float yaw = -90.0f;
-//float pitch = 0.0f;
-//float fov = 45.0f;
 
 // Windows
 std::string fileRootPath = "../../";
@@ -68,6 +67,7 @@ int main(int argc, const char * argv[])
         return -1;
     }
     glfwMakeContextCurrent(window);
+    glfwSwapInterval(1); // Enable vsync
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
     glfwSetCursorPosCallback(window, mouse_callback);
     glfwSetScrollCallback(window, scroll_callback);
@@ -83,12 +83,6 @@ int main(int argc, const char * argv[])
 
     glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
 
-//    float vertices[] = {
-//        -0.5f, -0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   0.0f, 0.0f,
-//        -0.5f, 0.5f, 0.0f,    0.0f, 1.0f, 0.0f,   0.0f, 1.0f,
-//        0.5f, 0.5f, 0.0f,     0.0f, 0.0f, 1.0f,   1.0f, 1.0f,
-//        0.5f, -0.5f, 0.0f,    1.0f, 1.0f, 0.0f,   1.0f, 0.0f
-//    };
     float vertices[] = {
         -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
          0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
@@ -133,36 +127,22 @@ int main(int argc, const char * argv[])
         -0.5f,  0.5f, -0.5f,  0.0f, 1.0f
     };
     
-//    unsigned int indices[] = {
-//        0, 1, 3,
-//        1, 2, 3
-//    };
-    
     unsigned int VAO;
     glGenVertexArrays(1, &VAO);
     
     unsigned int VBO;
     glGenBuffers(1, &VBO);
     
-//    unsigned int EBO;
-//    glGenBuffers(1, &EBO);
-    
     glBindVertexArray(VAO);
     
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-    
-//    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-//    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
     
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
     
     glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
     glEnableVertexAttribArray(1);
-    
-//    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
-//    glEnableVertexAttribArray(2);
     
     unsigned int texture0, texture1;
     glGenTextures(1, &texture0);
@@ -205,24 +185,6 @@ int main(int argc, const char * argv[])
     ourShader.setInt("texture0", 0);
     ourShader.setInt("texture1", 1);
     
-//    glm::mat4 model = glm::mat4(1.0f);
-//    model = glm::rotate(model, glm::radians(-55.0f), glm::vec3(1.0f, 0.0f, 0.0f));
-    
-    //glm::mat4 view = glm::mat4(1.0f);
-    //view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));
-
-    /*glm::mat4 view = glm::mat4(1.0f);
-    view = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
-    ourShader.setMat4("view", view);*/
-    
-//    glm::mat4 projection = glm::mat4(1.0f);
-//    projection = glm::perspective(glm::radians(fov), (float)screenWidth / (float)screenHeight, 0.1f, 100.0f);
-//    
-////    ourShader.setMat4("model", model);
-//    //ourShader.setMat4("view", view);
-//    ourShader.setMat4("projection", projection);
-    
-    
     glm::vec3 cubePositions[] = {
       glm::vec3( 0.0f,  0.0f,  0.0f),
       glm::vec3( 2.0f,  5.0f, -15.0f),
@@ -235,6 +197,13 @@ int main(int argc, const char * argv[])
       glm::vec3( 1.5f,  0.2f, -1.5f),
       glm::vec3(-1.3f,  1.0f, -1.5f)
     };
+
+    const char* glsl_version = "#version 330";
+    IMGUI_CHECKVERSION();
+    ImGui::CreateContext();
+    // Setup Platform/Renderer backends
+    ImGui_ImplGlfw_InitForOpenGL(window, true);
+    ImGui_ImplOpenGL3_Init(glsl_version);
     
     while (!glfwWindowShouldClose(window))
     {
@@ -243,27 +212,16 @@ int main(int argc, const char * argv[])
         lastFrame = currentFrame;
 
         processInput(window);
-        
-        glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+
+        glfwPollEvents();
+
+        glClearColor(clear_color.x, clear_color.y, clear_color.z, clear_color.w);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-        
-//        glm::mat4 model = glm::mat4(1.0f);
-//        model = glm::rotate(model, (float)glfwGetTime() * glm::radians(50.0f), glm::vec3(0.5f, 1.0f, 0.0f));
-//        ourShader.setMat4("model", model);
-        
-//        glm::mat4 trans = glm::mat4(1.0f);
-//        trans = glm::translate(trans, glm::vec3(0.5f, -0.5f, 0.0f));
-//        trans = glm::rotate(trans, (float)glfwGetTime(), glm::vec3(0.0f, 0.0f, 1.0f));
-//        trans = glm::scale(trans, glm::vec3(abs(sin(glfwGetTime())), abs(sin(glfwGetTime())), 1.0f));
-//        ourShader.setMat4("transform", trans);
         
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, texture0);
         glActiveTexture(GL_TEXTURE1);
         glBindTexture(GL_TEXTURE_2D, texture1);
-        
-//        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-//        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
         ourShader.setMat4("view", camera.GetViewMatrix());
 
@@ -283,20 +241,44 @@ int main(int argc, const char * argv[])
           glDrawArrays(GL_TRIANGLES, 0, 36);
         }
 
-        //float radius = 10.0f;
-        //float camX = sin(glfwGetTime()) * radius;
-        //float camZ = cos(glfwGetTime()) * radius;
-        //glm::mat4 view = glm::mat4(1.0f);
-        //view = glm::lookAt(glm::vec3(camX, 0.0f, camZ), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-        //ourShader.setMat4("view", view);
-//        glDrawArrays(GL_TRIANGLES, 0, 36);
-        
-//        glDrawArrays(GL_TRIANGLES, 0, 3);
+        // Start the Dear ImGui frame
+        ImGui_ImplOpenGL3_NewFrame();
+        ImGui_ImplGlfw_NewFrame();
+        ImGui::NewFrame();
+
+        {
+            ImGui::Begin("Status Window", NULL, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_AlwaysAutoResize);
+            ImGui::Text("Status Window:");
+
+            ImGui::NewLine();
+
+            ImGui::ColorEdit4("Clear Color", (float*)&clear_color);
+            ImGui::Text("Camera Attributes:");
+            ImGui::BulletText("Position: x: %.2f y: %.2f z: %.2f", camera.Position.x, camera.Position.y, camera.Position.z);
+            ImGui::BulletText("Pitch: %.2f", camera.Pitch);
+            ImGui::BulletText("Yaw: %.2f", camera.Yaw);
+            ImGui::BulletText("Zoom: %.2f", camera.Zoom);
+
+            ImGui::NewLine();
+
+            ImGui::Text("%.1f FPS (%.3f ms)", ImGui::GetIO().Framerate, 1000.0f / ImGui::GetIO().Framerate);
+            ImGui::End();
+        }
+
+        // Rendering
+        ImGui::Render();
+
+        ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
         glfwSwapBuffers(window);
-        glfwPollEvents();
     }
     
+    // Cleanup
+    ImGui_ImplOpenGL3_Shutdown();
+    ImGui_ImplGlfw_Shutdown();
+    ImGui::DestroyContext();
+
+    glfwDestroyWindow(window);
     glfwTerminate();
     return 0;
 }
