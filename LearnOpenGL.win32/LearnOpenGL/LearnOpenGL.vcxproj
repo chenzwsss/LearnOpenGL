@@ -133,12 +133,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\LearnOpenGL\Camera.cpp" />
     <ClCompile Include="..\..\LearnOpenGL\glad.c" />
     <ClCompile Include="..\..\LearnOpenGL\main.cpp" />
     <ClCompile Include="..\..\LearnOpenGL\Shader.cpp" />
     <ClCompile Include="..\..\LearnOpenGL\stb_image.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\LearnOpenGL\include\Camera.h" />
     <ClInclude Include="..\..\LearnOpenGL\include\glad\glad.h" />
     <ClInclude Include="..\..\LearnOpenGL\include\GLFW\glfw3.h" />
     <ClInclude Include="..\..\LearnOpenGL\include\GLFW\glfw3native.h" />

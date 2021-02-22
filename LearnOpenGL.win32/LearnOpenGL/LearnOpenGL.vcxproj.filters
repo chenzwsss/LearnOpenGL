@@ -36,6 +36,9 @@
     <ClCompile Include="..\..\LearnOpenGL\stb_image.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\LearnOpenGL\Camera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\LearnOpenGL\include\glad\glad.h">
@@ -54,6 +57,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\LearnOpenGL\stb_image.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\LearnOpenGL\include\Camera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
