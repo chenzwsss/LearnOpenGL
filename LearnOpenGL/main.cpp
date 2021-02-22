@@ -1,4 +1,4 @@
-﻿//
+//
 //  main.cpp
 //  LearnOpenGL
 //
@@ -37,9 +37,9 @@ float lastMousePosY = (float)screenHeight / 2;
 bool firstMoveMouse = true;
 
 // Windows
-std::string fileRootPath = "../../";
+//std::string fileRootPath = "../../";
 // MacOS
-//std::string fileRootPath = "/Users/chenzhuowei/Desktop/LearnOpenGL/";
+std::string fileRootPath = "/Users/chenzhuowei/Desktop/LearnOpenGL/";
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow* window);
