@@ -33,6 +33,7 @@ public:
     void setFloat(const std::string &name, float value) const;
     void set4f(const std::string &name, float r, float g, float b, float a) const;
     void setMat4(const std::string &name, glm::mat4 mat4);
+    void setVec3(const std::string &name, glm::vec3 vec3);
 };
 
 #endif /* Shader_h */
