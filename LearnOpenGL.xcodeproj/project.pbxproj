@@ -22,6 +22,11 @@
 		28AC1AC225E3E98600FA6035 /* Shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 28AC1AB725E3E98600FA6035 /* Shader.cpp */; };
 		28AC1AC325E3E98600FA6035 /* stb_image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 28AC1AB825E3E98600FA6035 /* stb_image.cpp */; };
 		28AC1AC425E3E98600FA6035 /* glad.c in Sources */ = {isa = PBXBuildFile; fileRef = 28AC1AB925E3E98600FA6035 /* glad.c */; };
+		C53DFD4B25F8A9210023775E /* libassimp.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C53DFD4825F8A9210023775E /* libassimp.dylib */; };
+		C53DFD4C25F8A9210023775E /* libassimp.3.1.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C53DFD4925F8A9210023775E /* libassimp.3.1.1.dylib */; };
+		C53DFD4D25F8A9210023775E /* libassimp.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C53DFD4A25F8A9210023775E /* libassimp.3.dylib */; };
+		C53DFD5225F8AA0F0023775E /* Mesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C53DFD5125F8AA0F0023775E /* Mesh.cpp */; };
+		C53DFD5525F8B5DD0023775E /* Model.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C53DFD5425F8B5DD0023775E /* Model.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -80,6 +85,14 @@
 		28FCE12725E2331F0092BDA6 /* glm */ = {isa = PBXFileReference; lastKnownFileType = folder; path = glm; sourceTree = "<group>"; };
 		37CF3A4425DA4C92007A931E /* shader.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader.vs; sourceTree = "<group>"; };
 		37CF3A4525DA4C92007A931E /* shader.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader.fs; sourceTree = "<group>"; };
+		C53DFD4725F8A90D0023775E /* assimp */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assimp; sourceTree = "<group>"; };
+		C53DFD4825F8A9210023775E /* libassimp.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libassimp.dylib; path = libs/libassimp.dylib; sourceTree = "<group>"; };
+		C53DFD4925F8A9210023775E /* libassimp.3.1.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libassimp.3.1.1.dylib; path = libs/libassimp.3.1.1.dylib; sourceTree = "<group>"; };
+		C53DFD4A25F8A9210023775E /* libassimp.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libassimp.3.dylib; path = libs/libassimp.3.dylib; sourceTree = "<group>"; };
+		C53DFD5025F8A9FD0023775E /* Mesh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Mesh.h; sourceTree = "<group>"; };
+		C53DFD5125F8AA0F0023775E /* Mesh.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Mesh.cpp; sourceTree = "<group>"; };
+		C53DFD5325F8B56E0023775E /* Model.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Model.h; sourceTree = "<group>"; };
+		C53DFD5425F8B5DD0023775E /* Model.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Model.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,8 +100,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C53DFD4B25F8A9210023775E /* libassimp.dylib in Frameworks */,
 				2847F049258F941400DDEF77 /* OpenGL.framework in Frameworks */,
+				C53DFD4C25F8A9210023775E /* libassimp.3.1.1.dylib in Frameworks */,
 				2847F050258F96CC00DDEF77 /* libglfw.3.dylib in Frameworks */,
+				C53DFD4D25F8A9210023775E /* libassimp.3.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -127,6 +143,9 @@
 		2847F031258F902F00DDEF77 /* libs */ = {
 			isa = PBXGroup;
 			children = (
+				C53DFD4925F8A9210023775E /* libassimp.3.1.1.dylib */,
+				C53DFD4A25F8A9210023775E /* libassimp.3.dylib */,
+				C53DFD4825F8A9210023775E /* libassimp.dylib */,
 				2847F04F258F96CC00DDEF77 /* libglfw.3.dylib */,
 			);
 			name = libs;
@@ -135,6 +154,7 @@
 		2847F035258F905800DDEF77 /* include */ = {
 			isa = PBXGroup;
 			children = (
+				C53DFD4725F8A90D0023775E /* assimp */,
 				28AC1A7925E3E93000FA6035 /* Camera.h */,
 				28AC1A7825E3E93000FA6035 /* Shader.h */,
 				28AC1A7725E3E93000FA6035 /* stb_image.h */,
@@ -142,6 +162,8 @@
 				2847F043258F937200DDEF77 /* KHR */,
 				2847F042258F936500DDEF77 /* glad */,
 				2847F036258F906E00DDEF77 /* GLFW */,
+				C53DFD5025F8A9FD0023775E /* Mesh.h */,
+				C53DFD5325F8B56E0023775E /* Model.h */,
 			);
 			path = include;
 			sourceTree = "<group>";
@@ -162,6 +184,8 @@
 				28AC1AB725E3E98600FA6035 /* Shader.cpp */,
 				28AC1AB825E3E98600FA6035 /* stb_image.cpp */,
 				28AC1AB925E3E98600FA6035 /* glad.c */,
+				C53DFD5125F8AA0F0023775E /* Mesh.cpp */,
+				C53DFD5425F8B5DD0023775E /* Model.cpp */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -266,12 +290,14 @@
 				28AC1AC325E3E98600FA6035 /* stb_image.cpp in Sources */,
 				28AC1ABB25E3E98600FA6035 /* imgui_widgets.cpp in Sources */,
 				28AC1ABC25E3E98600FA6035 /* imgui_impl_opengl3.cpp in Sources */,
+				C53DFD5225F8AA0F0023775E /* Mesh.cpp in Sources */,
 				28AC1AC125E3E98600FA6035 /* imgui_draw.cpp in Sources */,
 				28AC1AC225E3E98600FA6035 /* Shader.cpp in Sources */,
 				28AC1ABD25E3E98600FA6035 /* imgui_impl_glfw.cpp in Sources */,
 				2847F02A258F8E2700DDEF77 /* main.cpp in Sources */,
 				28AC1ABF25E3E98600FA6035 /* imgui_tables.cpp in Sources */,
 				28AC1AC025E3E98600FA6035 /* imgui_demo.cpp in Sources */,
+				C53DFD5525F8B5DD0023775E /* Model.cpp in Sources */,
 				28AC1ABE25E3E98600FA6035 /* imgui.cpp in Sources */,
 				28AC1AC425E3E98600FA6035 /* glad.c in Sources */,
 			);
@@ -332,8 +358,8 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
-					/Users/chenzhuowei/Desktop/LearnOpenGL/LearnOpenGL/include,
-					/Users/chenzhuowei/Desktop/LearnOpenGL/LearnOpenGL/src/imgui,
+					/Users/hw/Desktop/LearnOpenGL/LearnOpenGL/include,
+					/Users/hw/Desktop/LearnOpenGL/LearnOpenGL/src/imgui,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
@@ -389,8 +415,8 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
-					/Users/chenzhuowei/Desktop/LearnOpenGL/LearnOpenGL/include,
-					/Users/chenzhuowei/Desktop/LearnOpenGL/LearnOpenGL/src/imgui,
+					/Users/hw/Desktop/LearnOpenGL/LearnOpenGL/include,
+					/Users/hw/Desktop/LearnOpenGL/LearnOpenGL/src/imgui,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MTL_ENABLE_DEBUG_INFO = NO;
